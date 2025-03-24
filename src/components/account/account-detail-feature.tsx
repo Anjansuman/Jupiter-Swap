@@ -6,7 +6,7 @@ import { useMemo } from 'react'
 import { useParams } from 'next/navigation'
 
 import { ExplorerLink } from '../cluster/cluster-ui'
-import { AppHero, ellipsify } from '../ui/ui-layout'
+import { AppHero, ellipsify } from '../ui/app-layout'
 import { AccountBalance, AccountButtons, AccountTokens, AccountTransactions } from './account-ui'
 
 export default function AccountDetailFeature() {
