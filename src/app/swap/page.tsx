@@ -1,5 +1,6 @@
 'use client';
 
+import { DownArrow } from '@/components/ui/down-arrow';
 // import styles from './swap.module.css';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { VersionedTransaction, Connection } from '@solana/web3.js';
@@ -142,9 +143,9 @@ export default function Swap() {
 
   return (
     <div className="relative z-20 h-full w-full flex justify-center items-center">
-      <div className="backdrop-blur-lg rounded-2xl p-6 w-[400px] shadow-lg border-2 border-[#ffffff10] ">
+      <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 w-[400px] shadow-lg border-2 border-[#ffffff10] ">
         {/* Sell Section */}
-        <div className="bg-[#111] rounded-xl p-4 mb-4 border border-gray-800">
+        <div className="bg-[#11111160] backdrop-blur-lg rounded-xl p-4">
           <div className="text-gray-400 text-sm mb-2">Sell</div>
           <div className="flex justify-between items-center">
             <input
@@ -152,7 +153,7 @@ export default function Swap() {
                 value={fromAmount}
                 onChange={(e) => {
                     const value = e.target.value.replace(/^0+/, ""); // Remove leading zeros
-                    handleFromValueChange; // Call your handler with updated value
+                    handleFromValueChange(e); // Call your handler with updated value
                 }}
                 placeholder="0"
                 className="bg-transparent text-white text-2xl w-full outline-none appearance-none"
@@ -165,7 +166,7 @@ export default function Swap() {
             <select
               value={fromAsset.name}
               onChange={handleFromAssetChange}
-              className="bg-[#222] text-white text-sm rounded-lg px-3 py-2 border border-gray-700"
+              className="bg-[#111] text-white text-sm rounded-lg px-3 py-2 "
             >
               {assets.map((asset) => (
                 <option key={asset.mint} value={asset.name}>
@@ -178,14 +179,14 @@ export default function Swap() {
         </div>
 
         {/* Swap Arrow */}
-        <div className="flex justify-center items-center -my-2">
-          <div className="bg-[#111] p-2 rounded-full border border-gray-800">
-            ⬇️
+        <div className="flex justify-center items-center fixed z-10 top-1/2 -translate-y-11 left-1/2 -translate-x-1/2 hover: ">
+          <div className="bg-[#111] p-2 rounded-full hover:outline-purple-900 hover:outline outline-transparent transition-all duration-100 ease-in-out cursor-pointer ">
+            <DownArrow />
           </div>
         </div>
 
         {/* Buy Section */}
-        <div className="bg-[#111] rounded-xl p-4 mt-4 border border-gray-800">
+        <div className="bg-[#11111160] backdrop-blur-lg rounded-xl p-4 mt-1 ">
           <div className="text-gray-400 text-sm mb-2">Buy</div>
           <div className="flex justify-between items-center">
             <input
@@ -197,7 +198,7 @@ export default function Swap() {
             <select
               value={toAsset.name}
               onChange={handleToAssetChange}
-              className="bg-[#222] text-white text-sm rounded-lg px-3 py-2 border border-gray-700"
+              className="bg-[#111] text-white text-sm rounded-lg px-3 py-2 "
             >
               {assets.map((asset) => (
                 <option key={asset.mint} value={asset.name}>
@@ -206,6 +207,7 @@ export default function Swap() {
               ))}
             </select>
           </div>
+          <div className="text-gray-500 text-sm">$0</div>
         </div>
 
         {/* Swap Button */}

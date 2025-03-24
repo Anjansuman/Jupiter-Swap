@@ -12,7 +12,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
     >
       <div className='h-screen w-screen absolute top-0 left-0 backdrop-blur-md '></div>
       <div className='flex justify-between items-center'>
-        <div>
+        <div className='relative z-10 '>
           <Link href="/">
             <img src="/solana-logo.png" height={24} alt="Solana Logo" />
           </Link>
